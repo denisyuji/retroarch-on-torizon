@@ -19,7 +19,7 @@ We successfully tested the following libretro cores with a consistent performanc
 
 - A Toradex SoM with [Torizon installed](https://developer.toradex.com/getting-started/module-1-from-the-box-to-the-shell/installing-the-operating-system-torizon-ixora?som=apalis-imx8&board=ixora-carrier-board&os=torizon&desktop=linux). We currently only tested it with Toradex Apalis iMX8.
 
-- A Dockerhub account. In your PC, use `docker login` to register your credentials
+- A [Dockerhub account](https://hub.docker.com/signup). In your PC, use `docker login` to register your credentials
 
 - An HDMI screen connected to the board
 
@@ -55,20 +55,21 @@ After the reboot, pull the pre-built container image from Dockerhub and deploy t
 In your PC, clone this repository:
 
 ```
-$ git clone COMPLETE_AQUIIIII!!
+$ git clone https://github.com/denisyuji/retroarch-on-torizon.git
 ```
 
 Build the Docker image
 
 ```
 $ cd retroarch-on-torizon
+$ docker build -t <your-dockerhub-username>/retroarch-on-torizon . 
 ```
 
 After the build, push the image to 'your Dockerhub account.
 
-`"
+```
 $ docker push <your-dockerhub-username>/retroarch-on-torizon
-`"
+```
 
 ## Executing image ##
 
@@ -86,7 +87,7 @@ Pull your container from Dockerhub:
 # docker pull <your-dockerhub-username>/retroarch-on-torizon
 ```
 
-Finally, execute the container based on the image (adjust the command to your dockerhub username):
+Finally, execute the container based on the image (adjust the command to your Dockerhub username):
 
 ```
 docker run -e ACCEPT_FSL_EULA=1 -it --rm --name=retroarch --net=host --cap-add CAP_SYS_TTY_CONFIG \
