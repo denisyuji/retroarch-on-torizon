@@ -41,7 +41,7 @@ Reboot your board (You only need to do it once).
 After the reboot, pull the pre-built container image from Dockerhub and deploy the container:
 
 ```
-# docker pull <your-dockerhub-username>/retroarch-on-torizon && docker run -e ACCEPT_FSL_EULA=1 -it --rm --name=retroarch --net=host --cap-add CAP_SYS_TTY_CONFIG \
+# docker pull denisyuji/retroarch-on-torizon && docker run -e ACCEPT_FSL_EULA=1 -it --rm --name=retroarch --net=host --cap-add CAP_SYS_TTY_CONFIG \
 -v /dev:/dev -v /tmp:/tmp -v /run/udev/:/run/udev/ --device-cgroup-rule='c 4:* rmw' \
 -v ~/ROM:/home/ROM -v ~/BIOS:/home/BIOS \
 --device-cgroup-rule='c 13:* rmw' --device-cgroup-rule='c 199:* rmw' --device-cgroup-rule='c 226:* rmw' \
