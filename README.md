@@ -43,7 +43,7 @@ After the reboot, pull the pre-built container image from Dockerhub and deploy t
 ```
 # docker pull denisyuji/retroarch-on-torizon && docker run -e ACCEPT_FSL_EULA=1 -it --rm --name=retroarch --net=host --cap-add CAP_SYS_TTY_CONFIG \
 -v /dev:/dev -v /tmp:/tmp -v /run/udev/:/run/udev/ --device-cgroup-rule='c 4:* rmw' \
--v ~/ROM:/home/ROM -v ~/BIOS:/home/BIOS \
+-v ~/ROM:/home/ROM -v ~/BIOS:/home/BIOS --privileged \
 --device-cgroup-rule='c 13:* rmw' --device-cgroup-rule='c 199:* rmw' --device-cgroup-rule='c 226:* rmw' \
 --device-cgroup-rule='c 81:* rmw' denisyuji/retroarch-on-torizon
 ```
@@ -58,7 +58,7 @@ In your PC, clone this repository:
 $ git clone https://github.com/denisyuji/retroarch-on-torizon.git
 ```
 
-Build the Docker image
+Build the Docker image. It can take several minutes our hours, depending of the machine, since it tries to build all the possible cores for all the games platforms. You can modify the Dockerfile to build only specific cores.
 
 ```
 $ cd retroarch-on-torizon
